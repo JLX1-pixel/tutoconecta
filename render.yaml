@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: tutoconecta-louis
+    runtime: node
+    plan: free
+    region: virginia
+    rootDir: app
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22.22.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tutoconecta-db
+          property: connectionString
+databases:
+  - name: tutoconecta-db
+    plan: free
+    region: virginia
+    databaseName: tutoconecta
+    user: tutoconecta
+    ipAllowList: []
