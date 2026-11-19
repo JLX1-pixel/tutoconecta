@@ -2,6 +2,12 @@
 
 **Autor:** Louis Sleyth Acuña Mulford · Universidad de la Costa · Desarrollo Web · 2026.
 
+**Aplicación pública:** https://tutoconecta-louis-qfs1.onrender.com
+
+- [PDF de entrega y manual de usuario](docs/TutoConecta_Entrega.pdf)
+- [Manual del sistema](docs/TutoConecta_Manual_Sistema.pdf)
+- [Guion para grabar la sustentación](docs/Guion_Sustentacion_TutoConecta.md)
+
 La versión final independiente está en **`app/`**: React + TypeScript, API Node.js/Express y PostgreSQL. Incluye registro por correo y contraseña propios, perfiles, búsqueda, disponibilidad, reservas, solicitudes, agenda, valoraciones y notificaciones. No requiere cuenta de ChatGPT.
 
 - [Código de la aplicación](app/)
