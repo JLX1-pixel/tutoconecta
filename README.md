@@ -4,15 +4,10 @@
 
 **Aplicación pública:** https://tutoconecta-louis-qfs1.onrender.com
 
-- [PDF de entrega y manual de usuario](docs/TutoConecta_Entrega.pdf)
-- [Manual del sistema](docs/TutoConecta_Manual_Sistema.pdf)
-- [Guion para grabar la sustentación](docs/Guion_Sustentacion_TutoConecta.md)
-
 La versión final independiente está en **`app/`**: React + TypeScript, API Node.js/Express y PostgreSQL. Incluye registro por correo y contraseña propios, perfiles, búsqueda, disponibilidad, reservas, solicitudes, agenda, valoraciones y notificaciones. No requiere cuenta de ChatGPT.
 
 - [Código de la aplicación](app/)
 - [Configuración de Render](render.yaml)
-- [Propuesta comercial y de IA](fullstack/docs/PROPUESTA.md)
 
 ## Estado de verificación
 
@@ -53,8 +48,4 @@ Las reservas virtuales enlazan Jitsi, que puede solicitar inicio de sesión al a
 - `app/server/database.ts`: esquema PostgreSQL y transacciones.
 - `app/scripts/test-api.ts`: pruebas de integración.
 
-## Prototipo anterior
-
-Las páginas HTML, carpetas `css`, `js` y `database` de la raíz se conservan como antecedente del parcial. `fullstack/` contiene la implementación anterior para Sites/Cloudflare. **Render despliega exclusivamente `app/`.** Las instrucciones del prototipo están en [README-prototipo.md](README-prototipo.md).
-
-GitHub Pages puede mostrar el prototipo, pero no ejecutar el backend.
+El repositorio contiene exclusivamente la aplicación actual y su configuración. Los PDF, capturas y guiones de la entrega se conservan por separado en la carpeta local `outputs`.
