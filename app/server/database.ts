@@ -2,7 +2,9 @@ import pg from 'pg';
 pg.types.setTypeParser(20, Number);
 pg.types.setTypeParser(1700, Number);
 if (!process.env.DATABASE_URL) throw new Error('Configura DATABASE_URL antes de iniciar.');
-export const pool = new pg.Pool({connectionString: process.env.DATABASE_URL, max: 8});
+// Every connection resolves tables only inside this application's schema.
+// This also allows sharing a managed PostgreSQL instance without touching public.
+export const pool = new pg.Pool({connectionString: process.env.DATABASE_URL, max: 5, options:'-c search_path=tutoconecta'});
 pool.on('error', error => console.error('Database connection error', error.name));
 class Statement {
   constructor(public sql: string, public values: any[] = []) {}
@@ -25,6 +27,7 @@ export async function migrate(){
   try{
     await client.query('BEGIN');
     await client.query('SELECT pg_advisory_xact_lock(20261118)');
+    await client.query('CREATE SCHEMA IF NOT EXISTS tutoconecta');
     await client.query(`
       CREATE TABLE IF NOT EXISTS accounts(id text PRIMARY KEY,email text UNIQUE NOT NULL,name text NOT NULL,password_hash text NOT NULL,recovery_hash text NOT NULL,created_at timestamptz NOT NULL DEFAULT now());
       CREATE TABLE IF NOT EXISTS sessions(token_hash text PRIMARY KEY,user_id text NOT NULL REFERENCES accounts(id) ON DELETE CASCADE,expires_at timestamptz NOT NULL);

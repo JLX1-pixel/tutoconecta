@@ -29,9 +29,9 @@ Abrir http://127.0.0.1:5180. Las tablas se crean al iniciar dentro de una transa
 
 ## Despliegue independiente
 
-Aplicar `render.yaml` conectado al repositorio. Define un servicio web Node y PostgreSQL, ambos gratuitos en Virginia. `DATABASE_URL` se enlaza mediante la red privada. `/api/health` comprueba la base real. Tras aplicar el Blueprint, las actualizaciones de `main` se despliegan automáticamente.
+Aplicar `render.yaml` conectado al repositorio. Define un servicio web Node gratuito en Virginia. Con autorización del propietario, usa el esquema separado `tutoconecta` de la instancia PostgreSQL existente `manchas-piloto-db`; no administra ni modifica sus tablas anteriores. `DATABASE_URL` se enlaza por la red privada. Cada conexión fija `search_path=tutoconecta`. `/api/health` comprueba la base real. Tras aplicar el Blueprint, las actualizaciones de `main` se despliegan automáticamente.
 
-El plan gratuito puede tardar aproximadamente un minuto al despertar tras inactividad. **La base PostgreSQL gratuita caduca 30 días después de su creación**: exportar o migrar los datos antes del vencimiento para conservarlos.
+El plan gratuito puede tardar aproximadamente un minuto al despertar tras inactividad. La instancia compartida gratuita vence el **10 de diciembre de 2026, 21:07 (Colombia)**. Exportar o migrar el esquema antes del vencimiento para conservarlo. Un esquema separa las tablas, pero se comparten capacidad, credenciales de conexión y disponibilidad de la instancia; para operación comercial se recomienda una base y un rol exclusivos.
 
 ## Seguridad y alcance
 

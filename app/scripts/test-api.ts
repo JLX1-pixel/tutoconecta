@@ -3,7 +3,7 @@ import {randomUUID} from 'node:crypto';
 import pg from 'pg';
 const base=process.env.TEST_URL||'http://127.0.0.1:5180';
 if(new URL(base).hostname!=='127.0.0.1'||!process.env.DATABASE_URL?.includes('127.0.0.1'))throw new Error('Estas pruebas solo se ejecutan sobre una base local aislada.');
-const pool=new pg.Pool({connectionString:process.env.DATABASE_URL});
+const pool=new pg.Pool({connectionString:process.env.DATABASE_URL,options:'-c search_path=tutoconecta'});
 const suffix=randomUUID(),password='Prueba-local-2026-'+suffix;
 type Client={cookie:string;email:string};
 const a={cookie:'',email:`tutor-${suffix}@example.test`},b={cookie:'',email:`student-${suffix}@example.test`},c={cookie:'',email:`other-${suffix}@example.test`},guest={cookie:'',email:''};
